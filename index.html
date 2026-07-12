@@ -77,6 +77,21 @@
         /* flex fail fallback? */
         margin: 20px auto;
     }
+    .help {
+        max-width: 610px;
+        margin: 1rem auto 0;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        text-align: left;
+    }
+    .help h2 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .help ul {
+        margin: 0;
+        padding-left: 1.2rem;
+    }
 </style>
 </head>
 <body>
@@ -99,6 +114,18 @@ leaking out”</i></p>
     <br/>
     <p>Or try the following port to (SDL2 converted to) webasm (WIP, and maybe not mobile friendly 🤷)</p>
     <canvas id="canvas" width="610" height="433" oncontextmenu="event.preventDefault()"></canvas>
+    <section class="help">
+      <h2>Controls</h2>
+      <ul>
+        <li><b>Move a pipe:</b> X or Right Arrow, Z or Left Arrow, &quote; or Up Arrow, / or 7 or Down Arrow</li>
+        <li><b>Move a pipe:</b> Left Click</li>
+        <li><b>Place a pipe:</b> P, Space, Middle Click, or Double Left Click</li>
+        <li><b>Fast flow:</b> Tab</li>
+        <li><b>Start a new game:</b> N</li>
+        <li><b>Quit:</b> Ctrl+C —actually do nothing here</li>
+        <li><b>Quit, New Game, Score and Info</b> labels on the bottom are clickable</li>
+      </ul>
+    </section>
 </main>
 
 <script>var Module={canvas:document.getElementById("canvas")}</script>
