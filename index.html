@@ -74,7 +74,7 @@
         display: block;
         width: 610px;
         height: 433px;
-        /* Opzionale: garantisce il centraggio se flex fallisse per qualche motivo */
+        /* flex fail fallback? */
         margin: 20px auto;
     }
 </style>
@@ -94,15 +94,15 @@ leaking out”</i></p>
     <img src="xpipeman-01.png" alt="Screenshot of xpipeman game on ubuntu linux"/>
     <br/>
     <p>Get the source code from:</p>
-    <a class="repo-link" href="https://gitlab.freedesktop.org/fausterix/xpipeman" target="_blank" rel="noopener">GitLab</a>
-    <a class="repo-link" href="https://github.com/fausterix/xpipeman" target="_blank" rel="noopener">GitHub</a>
+    <span><a class="repo-link" href="https://gitlab.freedesktop.org/fausterix/xpipeman" target="_blank" rel="noopener">GitLab</a>
+    <a class="repo-link" href="https://github.com/fausterix/xpipeman" target="_blank" rel="noopener">GitHub</a></span>
     <br/>
-    <p>Or try it the following port to (SDL2 converted to) webasm (WIP, and not user mobile 🤷)</p>
-    <canvas id=canvas oncontextmenu=event.preventDefault()></canvas>
+    <p>Or try the following port to (SDL2 converted to) webasm (WIP, and maybe not mobile friendly 🤷)</p>
+    <canvas id="canvas" width="610" height="433" oncontextmenu="event.preventDefault()"></canvas>
 </main>
 
 <script>var Module={canvas:document.getElementById("canvas")}</script>
-<script async src=xpipeman.js></script>
+<script async src="xpipeman.js"></script>
 
 </body>
 </html>
