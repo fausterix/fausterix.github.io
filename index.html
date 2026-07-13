@@ -32,7 +32,7 @@
         text-align: center;
     }
     header {
-        padding: 2rem;
+        padding: 2rem 1rem;
         background: linear-gradient(120deg, #4CAF50, #2E7D32);
         color: white;
     }
@@ -46,14 +46,14 @@
         opacity: 0.9;
     }
     main {
-        padding: 2rem;
+        padding: 2rem 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     a.repo-link {
         display: inline-block;
-        margin: 1rem;
+        margin: 1rem 0.5rem;
         padding: 0.8rem 1.5rem;
         background: #4CAF50;
         color: white;
@@ -68,13 +68,21 @@
     img {
         max-width: 100%;
         height: auto;
-        width: auto;
+        border-radius: 8px;
     }
     #canvas {
         display: block;
-        width: 610px;
-        height: 433px;
-        /* flex fail fallback? */
+        width: 100% !important;
+        height: auto !important;
+        max-width: 610px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .canvas-container {
+        position: relative;
+        width: 100%;
+        max-width: 610px;
         margin: 20px auto;
     }
     .help {
@@ -83,6 +91,7 @@
         font-size: 0.95rem;
         line-height: 1.4;
         text-align: left;
+        padding: 0 1rem;
     }
     .help h2 {
         font-size: 1.1rem;
@@ -91,6 +100,18 @@
     .help ul {
         margin: 0;
         padding-left: 1.2rem;
+    }
+    /* Mobile adjustments */
+    @media (max-width: 640px) {
+        header {
+            padding: 1.5rem 1rem;
+        }
+        header h1 {
+            font-size: 2.1rem;
+        }
+        header h2 {
+            font-size: 1.05rem;
+        }
     }
 </style>
 </head>
@@ -112,8 +133,10 @@ leaking out”</i></p>
     <span><a class="repo-link" href="https://gitlab.freedesktop.org/fausterix/xpipeman" target="_blank" rel="noopener">GitLab</a>
     <a class="repo-link" href="https://github.com/fausterix/xpipeman" target="_blank" rel="noopener">GitHub</a></span>
     <br/>
-    <p>Or, directly in you browser, try the following (WIP) AI port to <i>SDL2</i> converted then with <i>Emscripten</i> to <b>webasm</b></p>
-    <canvas id="canvas" width="610" height="433" oncontextmenu="event.preventDefault()"></canvas>
+    <p>Or, play it directly in your browser! Try the following (WIP) AI port to <i>SDL2</i> converted then with <i>Emscripten</i> to <b>WebAssembly!</b></p>
+    <div class="canvas-container">
+        <canvas id="canvas" width="610" height="433" oncontextmenu="event.preventDefault()"></canvas>
+    </div>
     <section class="help">
       <h2>Controls</h2>
       <ul>
@@ -122,15 +145,29 @@ leaking out”</i></p>
         <li><b>Place a pipe:</b> P, Space, Middle Click, or Double Left Click</li>
         <li><b>Fast flow:</b> Tab or Fast Flow bottom button</li>
         <li><b>Start a new game:</b> N or New Game bottom button</li>
-        <li><b>Quit:</b> Ctrl+C or Quit bottom buttom —actually restart the game</li>
-        <li><b>Close popus:</b> Esc, Space, Return or its bottom button</li> 
-        <li><b>Quit, New Game, Score, Info and Fast Flow</b> bottom labels are clickable bottons</li>
-      </ul>
+        <li><b>Quit:</b> Ctrl+C or Quit bottom button —actually restart the game</li>
+        <li><b>Close popups:</b> Esc, Space, Return or its bottom button</li>
+        <li><b>Quit, New Game, Score, Info and Fast Flow</b> bottom labels are clickable buttons</li>
+        </ul>
     </section>
 </main>
 
 <script>var Module={canvas:document.getElementById("canvas")}</script>
 <script async src="xpipeman.js"></script>
 
+<!-- Responsive canvas script -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const canvas = document.getElementById("canvas");
+
+        function resizeCanvas() {
+            const maxWidth = Math.min(window.innerWidth - 30, 610);
+            canvas.style.width = maxWidth + "px";
+        }
+
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+    });
+</script>
 </body>
 </html>
