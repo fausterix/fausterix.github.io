@@ -113,6 +113,134 @@
             font-size: 1.05rem;
         }
     }
+
+    .keyboard-inline-legend,
+    .mouse-inline-legend {
+        display: inline-flex;
+        vertical-align: bottom;
+        align-items: center;
+        margin: 0 6px 1px 6px;
+    }
+
+    .keyboard-row {
+        display: inline-flex;
+        gap: 3px;
+    }
+
+    .wasd-grid-mini {
+        display: grid;
+        grid-template-columns: repeat(3, 24px);
+        grid-template-rows: repeat(2, 24px);
+        gap: 3px;
+    }
+
+    .key-mini {
+        box-sizing: border-box;
+        background: #ffffff;
+        color: #000000;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        user-select: none;
+        height: 24px;
+        min-width: 24px;
+        padding: 0 6px;
+        white-space: nowrap;
+    }
+
+    .key-mini.short {
+        width: 24px;
+        padding: 0;
+    }
+
+    .key-mini.long {
+        width: auto;
+        padding: 0 10px;
+    }
+
+    .km-w { grid-column: 2; grid-row: 1; }
+    .km-a { grid-column: 1; grid-row: 2; }
+    .km-s { grid-column: 2; grid-row: 2; }
+    .km-d { grid-column: 3; grid-row: 2; }
+
+    .hjkl-row-mini {
+        display: inline-flex;
+        gap: 3px;
+        vertical-align: bottom;
+    }
+
+    .mouse-btn {
+    width: 18px;
+    height: 26px;
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid #bfc4ca;
+    border-radius: 999px;
+    background: linear-gradient(to bottom, #ffffff 0%, #f2f4f7 55%, #e6e9ee 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.08),
+        0 1px 1px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.mouse-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 11px;
+    background: #c6cbd2;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.mouse-btn::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    width: 3px;
+    height: 6px;
+    background: linear-gradient(to bottom, #6b7280, #2f343d);
+    border-radius: 999px;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.mouse-left::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 11px;
+    background: #000000;
+    border-top-left-radius: 9999px;
+    border-bottom-right-radius: 1px;
+    z-index: 1;
+}
+
+.mouse-middle::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 24%;
+    height: 11px;
+    background: #000000;
+    border-radius: 999px;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+    /* ------------- */ 
+
 </style>
 </head>
 <body>
@@ -133,23 +261,127 @@ leaking out”</i></p>
     <span><a class="repo-link" href="https://gitlab.freedesktop.org/fausterix/xpipeman" target="_blank" rel="noopener">GitLab</a>
     <a class="repo-link" href="https://github.com/fausterix/xpipeman" target="_blank" rel="noopener">GitHub</a></span>
     <br/>
-    <p>Or, play it directly in your browser! Try the following (WIP) AI port to <i>SDL2</i> converted then with <i>Emscripten</i> to <b>WebAssembly!</b></p>
+    <p>Or, play it directly in your browser! Try the following (WIP) AI port to <i>SDL2</i> converted then to <b>WebAssembly!</b> with <i>Emscripten</i> </p>
     <div class="canvas-container">
         <canvas id="canvas" width="610" height="433" oncontextmenu="event.preventDefault()"></canvas>
     </div>
-    <section class="help">
-      <h2>Controls</h2>
-      <ul>
-        <li><b>Move a pipe:</b> L or Right Arrow, H or Left Arrow, K or Up Arrow, J or Down Arrow</li>
-        <li><b>Move a pipe:</b> Left Click</li>
-        <li><b>Place a pipe:</b> P, Space, Middle Click, or Double Left Click</li>
-        <li><b>Fast flow:</b> Tab or Fast Flow bottom button</li>
-        <li><b>Start a new game:</b> N or New Game bottom button</li>
-        <li><b>Quit:</b> Ctrl+C or Quit bottom button —actually restart the game</li>
-        <li><b>Close popups:</b> Esc, Space, Return or its bottom button</li>
-        <li><b>Quit, New Game, Score, Info and Fast Flow</b> bottom labels are clickable buttons</li>
-        </ul>
-    </section>
+
+<section class="help">
+    <h2>Controls</h2>
+    <ul>
+        <li>
+            <b>Move a pipe:</b>
+            <span class="keyboard-inline-legend">
+                <span class="wasd-grid-mini">
+                    <span class="key-mini short km-w">W</span>
+                    <span class="key-mini short km-a">A</span>
+                    <span class="key-mini short km-s">S</span>
+                    <span class="key-mini short km-d">D</span>
+                </span>
+            </span>
+            or
+            <span class="keyboard-inline-legend">
+                <span class="hjkl-row-mini">
+                    <span class="key-mini short">H</span>
+                    <span class="key-mini short">J</span>
+                    <span class="key-mini short">K</span>
+                    <span class="key-mini short">L</span>
+                </span>
+            </span>
+            or
+            <span class="mouse-inline-legend">
+                <span class="mouse-btn mouse-left"></span>
+            </span>
+        </li>
+
+        <li>
+            <b>Place a pipe:</b>
+            <span class="keyboard-inline-legend">
+                <span class="keyboard-row">
+                    <span class="key-mini short">P</span>
+                </span>
+            </span>
+            or
+            <span class="keyboard-inline-legend">
+                <span class="keyboard-row">
+                    <span class="key-mini long">Space</span>
+                </span>
+            </span>
+            or
+            <span class="mouse-inline-legend">
+                <span class="mouse-btn mouse-middle"></span>
+            </span>
+            or double
+            <span class="mouse-inline-legend">
+                <span class="mouse-btn mouse-left"></span>
+            </span>
+        </li>
+
+        <li>
+            <b>Fast flow:</b>
+            <span class="keyboard-inline-legend">
+                <span class="keyboard-row">
+                    <span class="key-mini long">Tab</span>
+                </span>
+            </span>
+            or <b style="border: 1.3px solid black">Fast Flow</b> bottom button
+        </li>
+
+        <li>
+            <b>Start a new game:</b>
+            <span class="keyboard-inline-legend">
+                <span class="keyboard-row">
+                    <span class="key-mini short">N</span>
+                </span>
+            </span>
+            or <b style="border: 1.3px solid black">New Game</b> bottom button
+        </li>
+
+        <li>
+            <b>Quit (actually go to initial screen):</b>
+            <span class="keyboard-inline-legend">
+                <span class="keyboard-row">
+                    <span class="key-mini long">Ctrl</span>
+                    +
+                    <span class="key-mini short">C</span>
+                </span>
+            </span>
+            or <b style="border: 1.3px solid black">Quit</b> bottom button
+        </li>
+
+        <li>
+            <b>Close popups:</b>
+            <span class="keyboard-inline-legend">
+                <span class="keyboard-row">
+                    <span class="key-mini long">Esc</span>
+                </span>
+            </span>
+            or
+            <span class="keyboard-inline-legend">
+                <span class="keyboard-row">
+                    <span class="key-mini long">Space</span>
+                </span>
+            </span>
+            or
+            <span class="keyboard-inline-legend">
+                <span class="keyboard-row">
+                    <span class="key-mini long">Enter</span>
+                </span>
+            </span>
+            or popup bottom button
+        </li>
+
+        <li>
+            <b style="border: 1.3px solid black">Quit</b>, 
+            <b style="border: 1.3px solid black">New Game</b>, 
+            <b style="border: 1.3px solid black">Score</b>, 
+            <b style="border: 1.3px solid black">Info</b> and 
+            <b style="border: 1.3px solid black">Fast Flow</b> bottom labels are clickable buttons
+        </li>
+    </ul>
+</section>
+
+
 </main>
 
 <script>var Module={canvas:document.getElementById("canvas")}</script>
