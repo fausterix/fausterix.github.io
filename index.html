@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="BDkE2nWaThYbaKE7Aglo8sHnA9I_p5Y7UWb9ye-Gd0U" />
 <meta name="msvalidate.01" content="24E5765A688CC917FB2D21EC33B671A0" />
-<title>Historical xpipeman 1.5 source code patched for ubuntu linux</title>
+<title>Historical game xpipeman 1.5 source code patched for ubuntu linux</title>
 <meta name="description" content="xpipeman 1.5 source code for modern ubuntu linux (20.04, 22.04, 24.04, ...)">
 <meta name="keywords" content="xpipeman, ubuntu, linux, open source, puzzle game, GitHub, GitLab">
 <meta name="author" content="fausterix">
@@ -113,9 +113,104 @@
             font-size: 1.05rem;
         }
     }
-
+    /* ------------- */
+    .tap-inline-legend {
+        display: inline-flex;
+        vertical-align: bottom;
+        align-items: center;
+        margin: 0 6px 1px 6px;
+    }
+    .tap-icon {
+        width: 18px;
+        height: 18px;
+        position: relative;
+        box-sizing: border-box;
+        border: 1px solid #bfc4ca;
+        border-radius: 50%;
+        background: linear-gradient(to bottom, #ffffff 0%, #f2f4f7 55%, #e6e9ee 100%);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.95),
+            inset 0 -2px 4px rgba(0, 0, 0, 0.08),
+            0 1px 1px rgba(0, 0, 0, 0.08);
+        overflow: visible;
+    }
+    .tap-icon::before {
+        content: "";
+        position: absolute;
+        left: 8px;
+        top: -6px;
+        width: 3px;
+        height: 11px;
+        background: #000000;
+        border-radius: 999px;
+        transform: rotate(18deg);
+        transform-origin: bottom center;
+    }
+    .tap-icon::after {
+        content: "";
+        position: absolute;
+        left: 4px;
+        top: 1px;
+        width: 8px;
+        height: 8px;
+        border: 1px solid #000000;
+        border-radius: 50%;
+        box-sizing: border-box;
+        background: transparent;
+    }
+    .touch-inline-legend {
+        display: inline-flex;
+        vertical-align: bottom;
+        margin: 0 5px 1px 5px;
+        align-items: flex-end;
+    }
+    .touch-circle {
+        width: 24px;
+        height: 24px;
+        border: 1px solid #cccccc;
+        border-radius: 50%;
+        background: #ffffff;
+        box-sizing: border-box;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .touch-circle::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background: #000000;
+        border-radius: 50%;
+        position: absolute;
+        z-index: 1;
+    }
+    .touch-feedback-ring {
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        border: 1px solid #000000;
+        border-radius: 50%;
+        opacity: 0.3;
+        box-sizing: border-box;
+        z-index: 1;
+    }
+    .touch-finger {
+        position: absolute;
+        width: 8px;
+        height: 16px;
+        border: 1px solid #000000;
+        border-radius: 4px 4px 0 0;
+        border-bottom: none;
+        background: #ffffff;
+        box-sizing: border-box;
+        z-index: 2;
+        top: 10px;
+        left: 6px;
+        transform: rotate(-45deg);
+        transform-origin: top center;
+    }
     /* ------------- */ 
-
     .keyboard-inline-legend,
     .mouse-inline-legend {
         display: inline-flex;
@@ -124,7 +219,6 @@
         margin: 0 6px 1px 6px;
         position: relative;
     }
-
     .mouse-badge {
         position: absolute;
         right: -10px;
@@ -148,19 +242,39 @@
         box-sizing: border-box;
         z-index: 3;
     }
-
+    .touch-badge {
+        position: absolute;
+        left: -10px;
+        bottom: auto;
+        top: -7px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 14px;
+        height: 14px;
+        padding: 0 3px;
+        border: 1px solid #000000;
+        border-radius: 999px;
+        background: #ffffff;
+        color: #000000;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 9px;
+        font-weight: 700;
+        line-height: 1;
+        white-space: nowrap;
+        box-sizing: border-box;
+        z-index: 3;
+    }
     .keyboard-row {
         display: inline-flex;
         gap: 3px;
     }
-
     .wasd-grid-mini {
         display: grid;
         grid-template-columns: repeat(3, 24px);
         grid-template-rows: repeat(2, 24px);
         gap: 3px;
     }
-
     .key-mini {
         box-sizing: border-box;
         background: #ffffff;
@@ -179,28 +293,23 @@
         padding: 0 6px;
         white-space: nowrap;
     }
-
     .key-mini.short {
         width: 24px;
         padding: 0;
     }
-
     .key-mini.long {
         width: auto;
         padding: 0 10px;
     }
-
     .km-w { grid-column: 2; grid-row: 1; }
     .km-a { grid-column: 1; grid-row: 2; }
     .km-s { grid-column: 2; grid-row: 2; }
     .km-d { grid-column: 3; grid-row: 2; }
-
     .hjkl-row-mini {
         display: inline-flex;
         gap: 3px;
         vertical-align: bottom;
     }
-
     .mouse-btn {
         width: 18px;
         height: 26px;
@@ -215,7 +324,6 @@
             0 1px 1px rgba(0, 0, 0, 0.08);
         overflow: hidden;
     }
-
     .mouse-btn::before {
         content: "";
         position: absolute;
@@ -227,7 +335,6 @@
         transform: translateX(-50%);
         z-index: 2;
     }
-
     .mouse-btn::after {
         content: "";
         position: absolute;
@@ -240,7 +347,6 @@
         transform: translateX(-50%);
         z-index: 2;
     }
-
     .mouse-left::after {
         content: "";
         position: absolute;
@@ -253,7 +359,6 @@
         border-bottom-right-radius: 1px;
         z-index: 1;
     }
-
     .mouse-middle::after {
         content: "";
         position: absolute;
@@ -266,7 +371,6 @@
         transform: translateX(-50%);
         z-index: 1;
     }
-
     .b-btn {
         display: inline-flex;
         align-items: flex-end;
@@ -279,7 +383,6 @@
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
         font-size: 13px;
     }
-
 </style>
 </head>
 <body>
@@ -331,6 +434,13 @@ leaking out”</i></p>
             <span class="mouse-inline-legend">
                 <span class="mouse-btn mouse-left"></span>
             </span>
+            or
+    <span class="touch-inline-legend">
+        <span class="touch-circle">
+            <span class="touch-feedback-ring"></span>
+            <span class="touch-finger"></span>
+        </span>
+    </span> 
         </li>
 
         <li>
@@ -355,7 +465,14 @@ leaking out”</i></p>
                 <span class="mouse-btn mouse-left"></span>
                     <span class="mouse-badge">x2</span>
             </span>
-            (double)
+            &nbsp;(double)
+    <span class="touch-inline-legend">
+        <span class="touch-circle">
+            <span class="touch-feedback-ring"></span>
+            <span class="touch-finger"></span>
+                    <span class="touch-badge">x2</span>
+        </span>
+    </span> 
         </li>
 
         <li>
