@@ -114,12 +114,39 @@
         }
     }
 
+    /* ------------- */ 
+
     .keyboard-inline-legend,
     .mouse-inline-legend {
         display: inline-flex;
         vertical-align: bottom;
         align-items: center;
         margin: 0 6px 1px 6px;
+        position: relative;
+    }
+
+    .mouse-badge {
+        position: absolute;
+        right: -10px;
+        bottom: -4px;
+        top: auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 14px;
+        height: 14px;
+        padding: 0 3px;
+        border: 1px solid #000000;
+        border-radius: 999px;
+        background: #ffffff;
+        color: #000000;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 9px;
+        font-weight: 700;
+        line-height: 1;
+        white-space: nowrap;
+        box-sizing: border-box;
+        z-index: 3;
     }
 
     .keyboard-row {
@@ -175,71 +202,83 @@
     }
 
     .mouse-btn {
-    width: 18px;
-    height: 26px;
-    position: relative;
-    box-sizing: border-box;
-    border: 1px solid #bfc4ca;
-    border-radius: 999px;
-    background: linear-gradient(to bottom, #ffffff 0%, #f2f4f7 55%, #e6e9ee 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.95),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.08),
-        0 1px 1px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-}
+        width: 18px;
+        height: 26px;
+        position: relative;
+        box-sizing: border-box;
+        border: 1px solid #bfc4ca;
+        border-radius: 999px;
+        background: linear-gradient(to bottom, #ffffff 0%, #f2f4f7 55%, #e6e9ee 100%);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.95),
+            inset 0 -2px 4px rgba(0, 0, 0, 0.08),
+            0 1px 1px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+    }
 
-.mouse-btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 1px;
-    height: 11px;
-    background: #c6cbd2;
-    transform: translateX(-50%);
-    z-index: 2;
-}
+    .mouse-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 1px;
+        height: 11px;
+        background: #c6cbd2;
+        transform: translateX(-50%);
+        z-index: 2;
+    }
 
-.mouse-btn::after {
-    content: "";
-    position: absolute;
-    top: 5px;
-    left: 50%;
-    width: 3px;
-    height: 6px;
-    background: linear-gradient(to bottom, #6b7280, #2f343d);
-    border-radius: 999px;
-    transform: translateX(-50%);
-    z-index: 2;
-}
+    .mouse-btn::after {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        width: 3px;
+        height: 6px;
+        background: linear-gradient(to bottom, #6b7280, #2f343d);
+        border-radius: 999px;
+        transform: translateX(-50%);
+        z-index: 2;
+    }
 
-.mouse-left::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 70%;
-    height: 11px;
-    background: #000000;
-    border-top-left-radius: 9999px;
-    border-bottom-right-radius: 1px;
-    z-index: 1;
-}
+    .mouse-left::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 70%;
+        height: 11px;
+        background: #000000;
+        border-top-left-radius: 9999px;
+        border-bottom-right-radius: 1px;
+        z-index: 1;
+    }
 
-.mouse-middle::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 24%;
-    height: 11px;
-    background: #000000;
-    border-radius: 999px;
-    transform: translateX(-50%);
-    z-index: 1;
-}
-    /* ------------- */ 
+    .mouse-middle::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 24%;
+        height: 11px;
+        background: #000000;
+        border-radius: 999px;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+
+    .b-btn {
+        display: inline-flex;
+        align-items: flex-end;
+        box-sizing: border-box;
+        border: 1px solid #000000;
+        background: #ffffff;
+        padding: 2px 3px;
+        white-space: nowrap;
+        line-height: 1;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 13px;
+    }
 
 </style>
 </head>
@@ -261,7 +300,7 @@ leaking out”</i></p>
     <span><a class="repo-link" href="https://gitlab.freedesktop.org/fausterix/xpipeman" target="_blank" rel="noopener">GitLab</a>
     <a class="repo-link" href="https://github.com/fausterix/xpipeman" target="_blank" rel="noopener">GitHub</a></span>
     <br/>
-    <p>Or, play it directly in your browser! Try the following (WIP) AI port to <i>SDL2</i> converted then to <b>WebAssembly!</b> with <i>Emscripten</i> </p>
+    <p>Or, play it directly in your browser! Try the following (<b>WIP</b>) AI port to <i>SDL2</i> converted then to <b>WebAssembly!</b> with <i>Emscripten</i> </p>
     <div class="canvas-container">
         <canvas id="canvas" width="610" height="433" oncontextmenu="event.preventDefault()"></canvas>
     </div>
@@ -311,10 +350,12 @@ leaking out”</i></p>
             <span class="mouse-inline-legend">
                 <span class="mouse-btn mouse-middle"></span>
             </span>
-            or double
+            or
             <span class="mouse-inline-legend">
                 <span class="mouse-btn mouse-left"></span>
+                    <span class="mouse-badge">x2</span>
             </span>
+            (double)
         </li>
 
         <li>
@@ -324,7 +365,7 @@ leaking out”</i></p>
                     <span class="key-mini long">Tab</span>
                 </span>
             </span>
-            or <b style="border: 1.3px solid black">Fast Flow</b> bottom button
+            or <b class="b-btn">Fast Flow</b> bottom button
         </li>
 
         <li>
@@ -334,7 +375,7 @@ leaking out”</i></p>
                     <span class="key-mini short">N</span>
                 </span>
             </span>
-            or <b style="border: 1.3px solid black">New Game</b> bottom button
+            or <b class="b-btn">New Game</b> bottom button
         </li>
 
         <li>
@@ -346,7 +387,7 @@ leaking out”</i></p>
                     <span class="key-mini short">C</span>
                 </span>
             </span>
-            or <b style="border: 1.3px solid black">Quit</b> bottom button
+            or <b class="b-btn">Quit</b> bottom button
         </li>
 
         <li>
@@ -372,11 +413,9 @@ leaking out”</i></p>
         </li>
 
         <li>
-            <b style="border: 1.3px solid black">Quit</b>, 
-            <b style="border: 1.3px solid black">New Game</b>, 
-            <b style="border: 1.3px solid black">Score</b>, 
-            <b style="border: 1.3px solid black">Info</b> and 
-            <b style="border: 1.3px solid black">Fast Flow</b> bottom labels are clickable buttons
+            <b class="b-btn">Score</b> and
+            <b class="b-btn">Info</b>
+            bottom labels are clickable buttons too
         </li>
     </ul>
 </section>
