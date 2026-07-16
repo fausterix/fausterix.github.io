@@ -176,15 +176,28 @@
         align-items: center;
         justify-content: center;
     }
+    /* Cerchio nero centrale */
     .touch-circle::before {
         content: "";
-        width: 8px;
-        height: 8px;
-        background: #000000;
+        width: 10px;
+        height: 10px;
+        background: #cccccc;
         border-radius: 50%;
         position: absolute;
         z-index: 1;
     }
+    /* Anello grigio intermedio (diametro 19px) */
+    .touch-feedback-ring-outer {
+        position: absolute;
+        width: 19px;
+        height: 19px;
+        border: 1px solid #000000;
+        border-radius: 50%;
+        opacity: 0.2;
+        box-sizing: border-box;
+        z-index: 1;
+    }
+    /* Anello nero interno (diametro 14px) */
     .touch-feedback-ring {
         position: absolute;
         width: 14px;
@@ -210,20 +223,24 @@
         transform: rotate(-45deg);
         transform-origin: top center;
     }
-    /* ------------- */ 
-    .keyboard-inline-legend,
-    .mouse-inline-legend {
-        display: inline-flex;
-        vertical-align: bottom;
-        align-items: center;
-        margin: 0 6px 1px 6px;
-        position: relative;
-    }
-    .mouse-badge {
+    .touch-finger::before {
+        content: "";
         position: absolute;
-        right: -10px;
-        bottom: -4px;
-        top: auto;
+        top: 1px;                    /* Spostata più vicina alla punta */
+        left: 50%;
+        width: 5px;
+        height: 5px;
+        border: 0.5px solid #000000;
+        border-radius: 50%;
+        background: #ffffff;         /* Unghia riempimento bianco */
+        box-sizing: border-box;
+        transform: translateX(-50%);
+    }
+    .touch-badge {
+        position: absolute;
+        left: -10px;
+        bottom: auto;
+        top: -7px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -242,11 +259,20 @@
         box-sizing: border-box;
         z-index: 3;
     }
-    .touch-badge {
+    /* ------------- */
+    .keyboard-inline-legend,
+    .mouse-inline-legend {
+        display: inline-flex;
+        vertical-align: bottom;
+        align-items: center;
+        margin: 0 6px 1px 6px;
+        position: relative;
+    }
+    .mouse-badge {
         position: absolute;
-        left: -10px;
-        bottom: auto;
-        top: -7px;
+        right: -10px;
+        bottom: -4px;
+        top: auto;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -435,12 +461,13 @@ leaking out”</i></p>
                 <span class="mouse-btn mouse-left"></span>
             </span>
             or
-    <span class="touch-inline-legend">
-        <span class="touch-circle">
-            <span class="touch-feedback-ring"></span>
-            <span class="touch-finger"></span>
-        </span>
-    </span> 
+            <span class="touch-inline-legend">
+                <span class="touch-circle">
+                    <span class="touch-feedback-ring-outer"></span>
+                    <span class="touch-feedback-ring"></span>
+                    <span class="touch-finger"></span>
+                </span>
+            </span>
         </li>
 
         <li>
@@ -465,14 +492,15 @@ leaking out”</i></p>
                 <span class="mouse-btn mouse-left"></span>
                     <span class="mouse-badge">x2</span>
             </span>
-            &nbsp;(double)
-    <span class="touch-inline-legend">
-        <span class="touch-circle">
-            <span class="touch-feedback-ring"></span>
-            <span class="touch-finger"></span>
+            &nbsp;← double →
+            <span class="touch-inline-legend">
+                <span class="touch-circle">
+                    <span class="touch-feedback-ring-outer"></span>
+                    <span class="touch-feedback-ring"></span>
+                    <span class="touch-finger"></span>
                     <span class="touch-badge">x2</span>
-        </span>
-    </span> 
+                </span>
+            </span>
         </li>
 
         <li>
