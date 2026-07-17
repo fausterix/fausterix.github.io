@@ -266,6 +266,7 @@
         align-items: center;
         margin: 2px 2px 3px 3px;
         position: relative;
+        margin: 4px;
     }
     .mouse-inline-legend {
         display: inline-flex;
@@ -414,6 +415,10 @@
         line-height: 1;
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
         font-size: 13px;
+        vertical-align: 5px;
+    }
+    .b-btn-d {
+        vertical-align: 0px;
     }
 </style>
 </head>
@@ -421,7 +426,7 @@
 
 <header>
     <h1>xpipeman</h1>
-    <h2>Historical source code version 1.5 patched for compiling on <i>"latest"</i> ubuntu linux (20.04 / 22.04 / 24.04 / ...)</h2>
+    <h2>Historical source code version 1.5 patched for compiling on <i>"modern"</i> ubuntu linux (20.04 / 22.04 / 24.04 / ???)</h2>
 </header>
 
 <main>
@@ -435,7 +440,8 @@ leaking out”</i></p>
     <span><a class="repo-link" href="https://gitlab.freedesktop.org/fausterix/xpipeman" target="_blank" rel="noopener">GitLab</a>
     <a class="repo-link" href="https://github.com/fausterix/xpipeman" target="_blank" rel="noopener">GitHub</a></span>
     <br/>
-    <p>Or, play it directly in your browser! Try the following (<b>WIP</b>) AI port to <i>SDL2</i> converted then to <b>WebAssembly!</b> with <i>Emscripten</i> </p>
+    <p>Or simply play it directly in your browser! Try the following (<b>WIP</b>) port to <i>SDL2</i> converted then to <b>WebAssembly</b> with <i>Emscripten</i>!<br/>
+    Developed with AI assistance, this port introduces some control improvements while keeping the original game logic completely intact.</p>
     <div class="canvas-container">
         <canvas id="canvas" width="610" height="433" oncontextmenu="event.preventDefault()"></canvas>
     </div>
@@ -520,7 +526,7 @@ leaking out”</i></p>
         </li>
 
         <li>
-            <b>Start a new game:</b>
+            <b>New game:</b>
             <span class="keyboard-inline-legend">
                 <span class="keyboard-row">
                     <span class="key-mini short">N</span>
@@ -559,14 +565,14 @@ leaking out”</i></p>
                 <span class="keyboard-row">
                     <span class="key-mini long">Enter</span>
                 </span>
-            </span>
+            </span> or press button
         </li>
 
         <li>
-            <b class="b-btn">Score</b>: save your high scores
+            <b class="b-btn b-btn-d">Score</b>: see your saved high scores
         </li>
         <li>
-            <b class="b-btn">Info</b>: credits
+            <b class="b-btn b-btn-d">Info</b>: see credits
         </li>
     </ul>
 </section>
