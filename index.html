@@ -240,7 +240,7 @@
         position: absolute;
         left: -10px;
         bottom: auto;
-        top: -7px;
+        top: 13px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -260,7 +260,13 @@
         z-index: 3;
     }
     /* ------------- */
-    .keyboard-inline-legend,
+    .keyboard-inline-legend {
+        display: inline-flex;
+        vertical-align: bottom;
+        align-items: center;
+        margin: 2px 2px 3px 3px;
+        position: relative;
+    }
     .mouse-inline-legend {
         display: inline-flex;
         vertical-align: bottom;
@@ -471,7 +477,7 @@ leaking out”</i></p>
         </li>
 
         <li>
-            <b>Place a pipe:</b> (only after move!)
+            <b>Place a pipe:</b>
             <span class="keyboard-inline-legend">
                 <span class="keyboard-row">
                     <span class="key-mini short">P</span>
@@ -510,7 +516,7 @@ leaking out”</i></p>
                     <span class="key-mini long">Tab</span>
                 </span>
             </span>
-            or <b class="b-btn">Fast Flow</b> bottom button
+            or <b class="b-btn">Fast Flow</b>
         </li>
 
         <li>
@@ -520,11 +526,11 @@ leaking out”</i></p>
                     <span class="key-mini short">N</span>
                 </span>
             </span>
-            or <b class="b-btn">New Game</b> bottom button
+            or <b class="b-btn">New Game</b>
         </li>
 
         <li>
-            <b>Quit (actually go to initial screen):</b>
+            <b>Quit:</b>
             <span class="keyboard-inline-legend">
                 <span class="keyboard-row">
                     <span class="key-mini long">Ctrl</span>
@@ -532,7 +538,7 @@ leaking out”</i></p>
                     <span class="key-mini short">C</span>
                 </span>
             </span>
-            or <b class="b-btn">Quit</b> bottom button
+            or <b class="b-btn">Quit</b>
         </li>
 
         <li>
@@ -554,13 +560,13 @@ leaking out”</i></p>
                     <span class="key-mini long">Enter</span>
                 </span>
             </span>
-            or popup bottom button
         </li>
 
         <li>
-            <b class="b-btn">Score</b> and
-            <b class="b-btn">Info</b>
-            bottom labels are clickable buttons too
+            <b class="b-btn">Score</b>: save your high scores
+        </li>
+        <li>
+            <b class="b-btn">Info</b>: credits
         </li>
     </ul>
 </section>
